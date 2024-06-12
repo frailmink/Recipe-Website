@@ -1,0 +1,150 @@
+body {
+    background-color: #f5f5f5;
+    margin-top: 20px;
+    padding-left: 8%;
+}
+
+.mainBlock {
+    box-shadow: 0 0 10px 0 rgb(129 137 149);
+    /* border: 1px solid #ecedef; */
+    background-color: white;
+    position: relative;
+    border-radius: .25rem .25rem .25rem .25rem;
+    /* height: 280px; */
+    overflow: hidden;
+    width: 90%;
+    padding-bottom: 10px;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.navigationBar {
+    background-color: #131313d3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+} 
+
+.navigationBar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+  
+.navigationBar a:hover {
+    background: #ddd;
+    color: black;
+}
+
+.dropdown {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    min-width: 100px;
+}
+
+.dropbtn {
+    background-color: rgba(76, 175, 79, 0);
+    color: white;
+    text-align: center;
+    padding: 14px;
+    /* font-size: 16px; */
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    /* min-width: 160px; */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+  
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    color: black;
+}
+  
+.dropdown:hover {
+    background-color: #ddd;
+}
+
+html {
+    height: 100%;
+    font-family: cursive;
+}
+
+label {
+    text-align: center;
+    width: 100%;
+    /* margin-left: 25%; */
+}
+
+label input {
+    width: 70%;
+}
+
+img {
+    border-radius: .25rem .25rem 0 0;
+    /* border-left: 1px solid #2e2e2e;
+    border-top: 1px solid #2e2e2e;
+    border-right: 1px solid #2e2e2e; */
+}
+
+.text {
+    font-size: x-large;
+    text-align: left;
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-bottom: 50px;
+}
+
+.followBtn {
+    border-radius: .25rem .25rem .25rem .25rem;
+    box-shadow: 0 0 100px 100px rgba(80, 80, 80, 0.86);
+    border-color: white;
+    background-color: white;
+    right: 10px;
+    top: 10px;
+    position: absolute;
+}
+
+/* input {
+    position: relative;
+    width: 50%;
+    padding: 2.5px;
+    padding-left: 10px;
+    margin-top: 30px;
+    margin-bottom: 100px;
+    margin-left: 25%;
+    background-color: #f3f3f3a8;
+    border: 1px solid #292929;
+    border-radius: .5rem .5rem .5rem .5rem;
+} */

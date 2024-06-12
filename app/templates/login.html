@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css_login.css') }}" type="text/css">
+</head>
+
+<body>
+    <div class="navigationBar">
+        <a href="{{url_for('index')}}">Home</a>
+        <a href="{{url_for('CreateRecipe')}}">Create Recipe</a>
+        <div class="dropdown">
+            {% if current_user.username != null %}
+            <button class="dropbtn">{{ current_user.username }} &#11206</button>
+            <div class="dropdown-content">
+                <a href="{{url_for('logout')}}">Logout</a>
+            </div>
+            {% else %}
+            <button class="dropbtn">User &#11206</button>
+            <div class="dropdown-content">
+                <a href="{{url_for('login')}}">Login</a>
+                <a href="{{url_for('SignUp')}}">Sign Up</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="title">
+            <h1>Login</h1>
+        </div>
+        <div class="forms">
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <label> <b class="text_a">Username:</b>
+                    <br>
+                    {{ form.username }}
+                </label>
+                <br>
+
+                <label> <b class="text_a">Password:</b>
+                    <br>
+                    {{ form.password }}
+                </label>
+                <br>
+                <br>
+
+                {{ form.submit1 }}
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

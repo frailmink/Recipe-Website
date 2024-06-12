@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css_recipe.css') }}" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+</head>
+
+<body>
+    <div class="navigationBar">
+        <a href="{{url_for('index')}}">Home</a>
+        <a href="{{url_for('CreateRecipe')}}">Create Recipe</a>
+        <div class="dropdown">
+            {% if current_user.username != null %}
+            <button class="dropbtn">{{ current_user.username }} &#11206</button>
+            <div class="dropdown-content">
+                <a href="{{url_for('logout')}}">Logout</a>
+            </div>
+            {% else %}
+            <button class="dropbtn">User &#11206</button>
+            <div class="dropdown-content">
+                <a href="{{url_for('login')}}">Login</a>
+                <a href="{{url_for('SignUp')}}">Sign Up</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="mainBlock">
+        <img src="{{ url_for('static', filename='images/' + recipe.image)}}" alt="{{ recipe.name }}" style="height: 300px; width: 100%; object-fit: cover;">
+        <br>
+        <br>
+        {% if current_user.id != null %}
+            {% if followed != True %}
+                <button onclick="PerformPost()" id="followBtn" class="followBtn">Follow</button>
+            {% else %}
+                <button onclick="PerformPost()" id="followBtn" class="followBtn">Unfollow</button>
+            {% endif %}
+        {% endif %}
+        <h1>{{ recipe.name }}</h1>
+        <div class="text">
+            {{ recipe.text | safe }}
+        </div>
+    </div>
+
+    <script>
+        function PerformPost() {
+            $.ajax({
+                url: "{{url_for('FollowRecipe')}}",
+                type: "POST",
+                data: JSON.stringify({
+                    userId: "{{ current_user.id }}",
+                    recipeId: "{{ recipe.id }}"
+                }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function() {
+                    if ($("#followBtn").text() == "Follow") {
+                        $("#followBtn").text("Unfollow");
+                    } else {
+                        $("#followBtn").text("Follow");
+                    }
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            })
+        }
+
+        // $(document).ready(function() {
+        //     $("#followBtn").text("Unfollow");
+        // })
+    </script>
+</body>
